@@ -6,7 +6,7 @@ java 内存区域主要分为五部分：
 - 本地方法栈(Native Method Stack)
 - Java 堆内存(Java Heap)
 - 方法区(Method Area)
-<br>
+
 ![image](http://osm01olbb.bkt.clouddn.com/github.com/jvmjvm-memory.png-github)
 
 ### 程序计数器
