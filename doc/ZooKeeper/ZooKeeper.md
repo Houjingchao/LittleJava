@@ -13,7 +13,7 @@ Zookeeper是一个分布式的、开源的分布式应用协调服务
 Zookeeper的数据保持在内存中，这就意味着它可以实现高吞吐量和低延迟的数据。
 
 zookeeper 集群的结构如下：
-
+<br>
 ![image](http://osm01olbb.bkt.clouddn.com/github.com/Zookeeper/zkservice.jpg)
 
 Zookeeper服务的组成部分必须相互知道，它们维持了一个内存状态影像，连同事务日志和快照在一个持久化的存储中。只要大多数的服务器是可用的，Zookeeper服务就是可用的。
@@ -27,6 +27,7 @@ Zookeeper服务的组成部分必须相互知道，它们维持了一个内存�
 Zookeeper提供的命名空间非常像一个标准的文件系统。一个名字是一系列的以'/'隔开的路径元素。Zookeeper命名空间中所有的节点都是通过路径识别。
 
 ZooKeeper 分层的命名空间
+<br>
 ![image](http://osm01olbb.bkt.clouddn.com/github.com/Zookeeper/zookeepernamespaces.png)
 
 #### 节点和临时节点
@@ -66,6 +67,7 @@ Zookeeper非常简单和高效。因为它的目标就是作为建设复杂服�
 #### 实现
 Zookeeper Compnents 展示了Zookeeper服务的高级组件。除了请求处理器的异常之外，组成Zookeeper服务的服务器都会复制它们自己组件的副本。
 ***ZooKeeper Components***
+<br>
 ![image](http://osm01olbb.bkt.clouddn.com/github.com/Zookeeper/struct.png)
 Replicated database 是一个内存数据库，它包含全部的数据树。为了可恢复性，更新记录保存到磁盘上，并且写入操作在应用到内存数据库之前被序列化到磁盘上。
 
@@ -79,6 +81,8 @@ Zookeeper使用了一个自定义的原子消息协议。因为消息层是原�
 它在应用中读比写多的时候有特别高的性能，因为在写入的时候包含所有服务器状态同步。（读比写多是协调服务的典型案例）
 
 Zookeeper吞吐量的读写比例变化：
+<br>
+
 ![image](http://osm01olbb.bkt.clouddn.com/github.com/Zookeeper/writeread.png)
 上图是Zookeeper3.2版本在dual 2Ghz Xeon and two SATA 15K RPM 驱动配置的服务器上的吞吐量图像。一个驱动作为专门的Zookeeper日志装置。快照写进操作系统驱动。1k的写请求和1K的读取请求。"Servers" 表明了Zookeeper全体的大小，组成Zookeeper服务的服务器数量。接近于30台机器模仿客户端。Zookeeper全体被配置为leaders不允许客户端连接。
 
@@ -95,6 +99,7 @@ Zookeeper吞吐量的读写比例变化：
 展示我们启动了7台机器组成的Zookeeper服务注入超时故障的行为。我们之前运行了相同的饱和基准，但现在我们保持写的百分比在不变的30%，这是一个比较保守的工作负载比。
 
 错误存在的可靠性
+<br>
 ![image](http://osm01olbb.bkt.clouddn.com/github.com/Zookeeper/avali.png)
 从这张图有几个重要的观察。
 第一，如果follows失败并快速的恢复，Zookeeper能够维持一个高的吞吐量尽管有故障。但也许更重要的是，leader选举算法允许系统快速恢复，足以预防吞吐量大幅下降。
